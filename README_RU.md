@@ -1,4 +1,5 @@
 # minecraft-bot-with-ChatGPT
+[RU](https://github.com/E-Viktor2003/minecraft-bot-with-ChatGPT/blob/main/README_RU.md)  [EN](https://github.com/E-Viktor2003/minecraft-bot-with-ChatGPT/blob/main/README.md)    
 Майнкрафт бот с ChatGPT может выполнять майнкрафт комнды , запомнить опредиленую информацию и помнит прошлый диолог 
 
 ## Установка:
