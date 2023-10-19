@@ -1,5 +1,5 @@
 # Minecraft bot with ChatGPT
-
+[RU](https://github.com/E-Viktor2003/minecraft-bot-with-ChatGPT/blob/main/README_RU.md)  [EN](https://github.com/E-Viktor2003/minecraft-bot-with-ChatGPT/blob/main/README.md)   
 A Minecraft bot with ChatGPT can execute Minecraft commands, remember specific information, and recall previous dialogues.
 
 ## Установка:
