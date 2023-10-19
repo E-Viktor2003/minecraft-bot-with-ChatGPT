@@ -1,31 +1,33 @@
-# minecraft-bot-with-ChatGPT
+# Minecraft бот с ChatGPT
 [RU](https://github.com/E-Viktor2003/minecraft-bot-with-ChatGPT/blob/main/README_RU.md)  [EN](https://github.com/E-Viktor2003/minecraft-bot-with-ChatGPT/blob/main/README.md)    
-Майнкрафт бот с ChatGPT может выполнять майнкрафт комнды , запомнить опредиленую информацию и помнит прошлый диолог 
+Minecraft бот с ChatGPT может выполнять команды Minecraft, запоминать определенную информацию и помнить предыдущий диалог.
 
 ## Установка:
 
-1. Установити Python
-   - https://www.python.org/
-2. Установить Node.js
-   - https://nodejs.org/ru
-3. Установить библеотеку mineflayer для Node.js
-   - Выполнити в терминале команду:
-   -	 npm i mineflayer
-4. Установить библеотеку javascript и g4f для Python
-   - Выполнити в терминале команду
-   -	 pip install javascript g4f
+1. Установите Python
+   - [Скачать Python](https://www.python.org/)
+2. Установите Node.js
+   - [Скачать Node.js](https://nodejs.org/ru)
+3. Установите библиотеку Mineflayer для Node.js
+   - Выполните в терминале команду:
+     `npm i mineflayer`
+4. Установите библиотеку JavaScript и g4f для Python
+   - Выполните в терминале команду:
+     `pip install javascript g4f`
 5. Клонируйте репозиторий
-   -	 git clone https://github.com/E-Viktor2003/minecraft-bot-with-ChatGPT.git
+    - `git clone https://github.com/E-Viktor2003/minecraft-bot-with-ChatGPT.git`
 
-### Ностройка и запуск
+### Настройка и запуск
 
-1. Открой файл config.py и пменяйти зночения на нужные
-   - minecraft_version - Версия майнкрафта
+1. Откройте файл config.py и измените значения на необходимые
+   ```
+   - minecraft_version - Версия Minecraft
    - host - хост сервера
-   - port - порт сервера если порта нету то установити зночения 25565
+   - port - порт сервера, если порта нет, то установите значение 25565
    - username - имя бота
-2. Запустити скрипт Bot.py
-    - Комнда:
-    -	  python Bot.py
-3. Подождите пока Bot зайдет на сервкр
-    - После того как Bot зашол на сервер напишити в чат любое собшения и подождите ответ 
+   ```
+3. Запустите скрипт Bot.py
+    - Команда:
+      `python Bot.py`
+4. Подождите, пока бот зайдет на сервер
+    - После того как бот зашел на сервер, напишите в чат любое сообщение и подождите ответ.
