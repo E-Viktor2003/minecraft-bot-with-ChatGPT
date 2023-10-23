@@ -30,7 +30,7 @@ def ChatGPT(Chat,bot):
     with open('messages.txt', 'r') as file:
         messages = file.read()
 
-    PromtMemory = promt +"\n информация которое ты запомнил:\n" + memory +"\n прошлые собшения:\n"+messages 
+    PromtMemory = promt +"\n information that you have memorized:\n" + memory +"\n past posts:\n"+messages 
 
     response = g4f.ChatCompletion.create(
         model=g4f.models.gpt_4,
