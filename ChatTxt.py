@@ -4,7 +4,7 @@ def add_message(message):
     message = "\n"+message
 
     try:
-        with open(file_path, "r") as file:
+        with open(file_path, "r", encoding="utf-8") as file:
             messages = file.readlines()
     except FileNotFoundError:
         messages = []
@@ -16,5 +16,5 @@ def add_message(message):
     messages.append(message)
 
 
-    with open(file_path, "w") as file:
+    with open(file_path, "w", encoding="utf-8") as file:
         file.writelines(messages)

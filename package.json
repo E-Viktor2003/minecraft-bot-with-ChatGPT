@@ -1,0 +1,10 @@
+{
+  "name": "minecraft-bot-with-chatgpt",
+  "version": "1.0.0",
+  "description": "Minecraft bot with ChatGPT: executes Minecraft commands, remembers information and previous dialogue.",
+  "private": true,
+  "license": "MIT",
+  "dependencies": {
+    "mineflayer": "^4.0.0"
+  }
+}

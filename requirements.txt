@@ -1,0 +1,8 @@
+# Python dependencies
+# Install with: pip install -r requirements.txt
+#
+# g4f         - free access to ChatGPT (the "Bing" provider is used in ChatM.py)
+# javascript  - bridge that runs the Mineflayer (Node.js) bot from Python
+
+g4f
+javascript

@@ -19,16 +19,22 @@ def split_text(text, max_length=250):
     text_parts = [text[i:i+max_length] for i in range(0, len(text), max_length)]
     return text_parts
 
+def read_text_file(file_path):
+    # the file may not exist yet (memory.txt and messages.txt are created
+    # automatically and are not stored in the repository)
+    try:
+        with open(file_path, 'r', encoding='utf-8') as file:
+            return file.read()
+    except FileNotFoundError:
+        return ""
+
 def ChatGPT(Chat,bot):
 
-    with open('promt.txt', 'r') as file:
-        promt = file.read()
+    promt = read_text_file('promt.txt')
 
-    with open('memory.txt', 'r') as file:
-        memory = file.read()
+    memory = read_text_file('memory.txt')
 
-    with open('messages.txt', 'r') as file:
-        messages = file.read()
+    messages = read_text_file('messages.txt')
 
     PromtMemory = promt +"\n information that you have memorized:\n" + memory +"\n past posts:\n"+messages 
 
@@ -60,7 +66,7 @@ def ChatGPT(Chat,bot):
                 Bot_Replied12 = Bot_Replied1.replace("/memory delete", '')
                 memory2 = memory.replace(Bot_Replied12, "")
                 print(memory2+"123")
-                with open('memory.txt', 'w') as file:
+                with open('memory.txt', 'w', encoding='utf-8') as file:
                     file.write(memory2)
 
             elif "replace" in Bot_Replied1:
@@ -69,12 +75,12 @@ def ChatGPT(Chat,bot):
                 print(memory2)
                 memory3 = memory.replace(memory2[0],memory2[1])
 
-                with open('memory.txt', 'w') as file:
+                with open('memory.txt', 'w', encoding='utf-8') as file:
                     file.write(memory3)
 
             else:
                 Bot_Replied12 = Bot_Replied1.replace("/memory", '')
-                with open('memory.txt', 'a') as file:
+                with open('memory.txt', 'a', encoding='utf-8') as file:
                     file.write("\n"+Bot_Replied12)
         if len(Bot_Replied1) < 256:
           if not "/stop" in Bot_Replied1 or "/restart" in Bot_Replied1 or "/memory" in Bot_Replied1:

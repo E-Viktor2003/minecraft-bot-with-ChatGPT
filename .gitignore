@@ -1,0 +1,24 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# --- Node.js ---
+node_modules/
+npm-debug.log*
+package-lock.json
+
+# --- Runtime data of the bot (created automatically) ---
+# Conversation history and the bot's memory are local to your machine
+# and must not end up in the repository.
+memory.txt
+messages.txt
+
+# --- IDE / OS ---
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

@@ -1,33 +1,79 @@
 # Minecraft бот с ChatGPT
-[RU](https://github.com/E-Viktor2003/minecraft-bot-with-ChatGPT/blob/main/README_RU.md)  [EN](https://github.com/E-Viktor2003/minecraft-bot-with-ChatGPT/blob/main/README.md)    
+
+**Русский** | [English](README.md)
+
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)
+![Node.js](https://img.shields.io/badge/Node.js-18%2B-green.svg)
+
 Minecraft бот с ChatGPT может выполнять команды Minecraft, запоминать определенную информацию и помнить предыдущий диалог.
 
-## Установка:
+## Как это работает
 
-1. Установите Python
-   - [Скачать Python](https://www.python.org/)
-2. Установите Node.js
-   - [Скачать Node.js](https://nodejs.org/ru)
-3. Установите библиотеку Mineflayer для Node.js
-   - Выполните в терминале команду:
-     `npm i mineflayer`
-4. Установите библиотеку JavaScript и g4f для Python
-   - Выполните в терминале команду:
-     `pip install javascript g4f`
-5. Клонируйте репозиторий
-    - `git clone https://github.com/E-Viktor2003/minecraft-bot-with-ChatGPT.git`
+1. `Bot.py` подключается к серверу через [Mineflayer](https://github.com/PrismarineJS/mineflayer) (библиотека для Node.js, запускается из Python через пакет `javascript`) и слушает чат.
+2. Каждое сообщение уходит в `ChatM.py`, который собирает запрос к ChatGPT (библиотека `g4f`): промпт из `promt.txt`, память бота (`memory.txt`) и последние сообщения (`messages.txt`).
+3. Модель отвечает в формате `/команда | текст`. Всё, что до `|`, бот выполняет как команду Minecraft (для этого нужны права оператора), а всё, что после `|`, пишет в чат. Длинные ответы разбиваются на части по 250 символов.
+4. Команда `/memory` позволяет боту сохранять, заменять и удалять информацию между перезапусками.
 
-### Настройка и запуск
+## Требования
 
-1. Откройте файл config.py и измените значения на необходимые
+- [Python 3.10 или новее](https://www.python.org/)
+- [Node.js 18 или новее](https://nodejs.org/)
+- Сервер Minecraft, где бот имеет **права оператора** (иначе команды выполняться не будут)
+
+## Установка
+
+1. Клонируйте репозиторий:
+   ```bash
+   git clone https://github.com/E-Viktor2003/minecraft-bot-with-ChatGPT.git
+   cd minecraft-bot-with-ChatGPT
    ```
-   - minecraft_version - Версия Minecraft
-   - host - хост сервера
-   - port - порт сервера, если порта нет, то установите значение 25565
-   - username - имя бота
+2. Установите зависимости Python (`javascript`, `g4f`):
+   ```bash
+   pip install -r requirements.txt
    ```
-3. Запустите скрипт Bot.py
-    - Команда:
-      `python Bot.py`
-4. Подождите, пока бот зайдет на сервер
-    - После того как бот зашел на сервер, напишите в чат любое сообщение и подождите ответ.
+3. Установите зависимость Node.js (`mineflayer`):
+   ```bash
+   npm install
+   ```
+
+## Настройка и запуск
+
+1. Откройте файл `config.py` и измените значения на необходимые:
+
+   | Параметр | Описание |
+   | --- | --- |
+   | `minecraft_version` | версия сервера Minecraft, например `1.16.5` |
+   | `host` | адрес сервера (`localhost` для локального сервера) |
+   | `port` | порт сервера; если порта нет, укажите `25565` |
+   | `username` | имя бота |
+
+2. Запустите скрипт `Bot.py`:
+   ```bash
+   python Bot.py
+   ```
+3. Подождите, пока бот зайдет на сервер. После этого напишите в чат любое сообщение и подождите ответ.
+
+## Структура проекта
+
+```
+Bot.py          - точка входа: подключение к серверу и прослушивание чата
+ChatM.py        - запрос к ChatGPT, обработка команд и /memory
+ChatTxt.py      - хранение последних 10 сообщений чата
+config.py       - настройки подключения к серверу
+promt.txt       - системный промпт, описывающий поведение бота
+memory.txt      - долговременная память бота (создается автоматически, в git не хранится)
+messages.txt    - история последних сообщений (создается автоматически, в git не хранится)
+requirements.txt - зависимости Python
+package.json    - зависимости Node.js
+```
+
+## Примечания
+
+- `memory.txt` и `messages.txt` — это рабочие данные: они создаются автоматически и добавлены в `.gitignore`, поэтому история ваших диалогов не попадет в репозиторий.
+- Библиотека `g4f` работает через публичные провайдеры, которые часто меняются и ломаются. Если бот перестал отвечать — обновите библиотеку (`pip install -U g4f`) и при необходимости поменяйте провайдер в `ChatM.py`.
+- Сообщение `the bot successfully logged into the server` печатается сразу после подключения; первый ответ модели может занять несколько секунд.
+
+## Лицензия
+
+[MIT](LICENSE)
